@@ -1,0 +1,31 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:32768"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/video-catalogue",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/videos",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "35.209.185.57",
+          "Port": 80
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/videos/{filename}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/videos/{filename}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "35.208.170.130",
+          "Port": 80
+        }
+      ]
+    }
+  ]
+}
