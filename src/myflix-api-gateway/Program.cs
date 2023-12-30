@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 
 // Configure ocelot
 var ocelotConfig = builder.Environment.IsDevelopment() ? "ocelot.development.json" : "ocelot.production.json";
+
+//ocelotConfig = "ocelot.development.json";
 builder.Configuration.AddJsonFile(ocelotConfig, optional: false, reloadOnChange: true);
 builder.Services.AddOcelot(builder.Configuration);
 
