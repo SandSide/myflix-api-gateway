@@ -1,6 +1,10 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "http://35.209.118.200:5001"
+    "BaseUrl": "http://35.209.118.200:5001",
+    "RateLimitOptions": {
+      "DisableRateLimitHeaders": false,
+      "QuotaExceededMessage": "Too many requests"
+    }
   },
   "Routes": [
     {
@@ -13,7 +17,14 @@
           "Host": "35.209.185.57",
           "Port": 80
         }
-      ]
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     },
     {
       "UpstreamPathTemplate": "/gateway/videos/{filename}",
@@ -25,7 +36,14 @@
           "Host": "35.208.170.130",
           "Port": 80
         }
-      ]
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     }
   ]
 }

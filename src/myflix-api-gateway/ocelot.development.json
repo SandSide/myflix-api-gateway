@@ -24,7 +24,7 @@
         "Period": "1s",
         "PeriodTimespan": 1,
         "Limit": 1
-      },
+      }
     },
     {
       "UpstreamPathTemplate": "/gateway/videos/{filename}",
