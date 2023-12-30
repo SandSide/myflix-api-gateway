@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Hosting.Internal;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -11,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configure ocelot
-builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+var ocelotConfig = builder.Environment.IsDevelopment() ? "ocelot.development.json" : "ocelot.production.json";
+builder.Configuration.AddJsonFile(ocelotConfig, optional: false, reloadOnChange: true);
 builder.Services.AddOcelot(builder.Configuration);
 
 var app = builder.Build();
