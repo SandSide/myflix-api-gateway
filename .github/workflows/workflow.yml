@@ -1,5 +1,8 @@
 name: Deploy to Google Cloud VM
 on:
+  push:
+    branches:
+    - feature/devops  
   pull_request:
     types: [closed]
     branches:
@@ -9,7 +12,6 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        if: github.event.pull_request.merged == true
 
         steps:
             - name: Checkout code
