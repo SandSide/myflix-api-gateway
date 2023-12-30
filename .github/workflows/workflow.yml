@@ -39,5 +39,6 @@ jobs:
                 script: |
                     docker stop myflix-api-gateway
                     docker rm myflix-api-gateway
+                    docker image rm sandside/myflix:api-gateway
                     docker pull sandside/myflix:api-gateway
                     docker run -d -p 80:8080 --restart=always --name myflix-api-gateway sandside/myflix:api-gateway
