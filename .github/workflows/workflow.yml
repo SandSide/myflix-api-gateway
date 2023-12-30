@@ -1,0 +1,44 @@
+name: Deploy to Google Cloud VM
+on:
+  push:
+    branches:
+    - feature/devops  
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+      - cloud-deploy
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4      
+              
+            - name: Login to docker hub
+              uses: docker/login-action@v3
+              with:
+                username: ${{ secrets.DOCKERHUB_USERNAME }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Build and push docker image
+              uses: docker/build-push-action@v5
+              with:
+                context: ./src/myflix-api-gateway
+                push: true
+                tags: sandside/myflix:api-gateway
+
+            - name: Pull and run image in VM
+              uses: appleboy/ssh-action@master
+              with:
+                host: ${{ secrets.VM_IP }}
+                username: ${{ secrets.VM_USERNAME }}
+                key: ${{ secrets.VM_SSH_KEY }}
+                script: |
+                    docker stop myflix-api-gateway
+                    docker rm myflix-api-gateway
+                    docker image rm sandside/myflix:api-gateway
+                    docker pull sandside/myflix:api-gateway
+                    docker run -d -p 80:8080 --restart=always --name myflix-api-gateway sandside/myflix:api-gateway
