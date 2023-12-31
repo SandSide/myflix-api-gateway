@@ -35,8 +35,15 @@
         {
           "Host": "35.208.170.130",
           "Port": 80
+        },
+        {
+          "Host": "35.208.158.44",
+          "Port": 80
         }
       ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
       "RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,
