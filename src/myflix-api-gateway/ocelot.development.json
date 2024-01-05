@@ -24,6 +24,10 @@
         "Period": "1s",
         "PeriodTimespan": 1,
         "Limit": 1
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer", // Specify the authentication provider key for JWT
+        "AllowedScopes": []
       }
     },
     {
@@ -50,6 +54,10 @@
         "Period": "1s",
         "PeriodTimespan": 1,
         "Limit": 1
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer", // Specify the authentication provider key for JWT
+        "AllowedScopes": []
       }
     }
   ]
