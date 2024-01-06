@@ -59,6 +59,25 @@
         "AuthenticationProviderKey": "Bearer", // Specify the authentication provider key for JWT
         "AllowedScopes": []
       }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/auth/{action}",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/api/auth/{action}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 5002
+        }
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     }
   ]
 }
