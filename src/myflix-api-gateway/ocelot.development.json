@@ -78,6 +78,23 @@
         "PeriodTimespan": 1,
         "Limit": 1
       }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/thumbnails/{filename}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/thumbnails/{filename}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "35.208.92.45",
+          "Port": 80
+        }
+      ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer", // Specify the authentication provider key for JWT
+        "AllowedScopes": []
+      }
     }
   ]
 }
